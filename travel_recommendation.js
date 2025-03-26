@@ -73,6 +73,8 @@ function handleSearch() {
 				data.countries[targetIndex].cities.forEach((city) => {
 					resultDiv.appendChild(getResultCardElement(city));
 				});
+
+				return;
 			} else {
 				if (input.match(countryRegex)) {
 					data.countries.forEach((country) => {
@@ -80,14 +82,20 @@ function handleSearch() {
 							resultDiv.appendChild(getResultCardElement(city));
 						});
 					});
+
+					return;
 				} else if (input.match(templeRegex)) {
 					data.temples.forEach((temple) => {
 						resultDiv.appendChild(getResultCardElement(temple));
 					});
+
+					return;
 				} else if (input.match(beachRegex)) {
 					data.beaches.forEach((beach) => {
 						resultDiv.appendChild(getResultCardElement(beach));
 					});
+
+					return;
 				} else {
 					resultDiv.innerHTML = "Destination not found";
 				}
