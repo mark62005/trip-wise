@@ -72,22 +72,24 @@ function handleSearch() {
 				data.countries[targetIndex].cities.forEach((city) => {
 					resultDiv.appendChild(getResultCardElement(city));
 				});
-			} else if (input.match(countryRegex)) {
-				data.countries.forEach((country) => {
-					country.cities.forEach((city) => {
-						resultDiv.appendChild(getResultCardElement(city));
-					});
-				});
-			} else if (input.match(templeRegex)) {
-				data.temples.forEach((temple) => {
-					resultDiv.appendChild(getResultCardElement(temple));
-				});
-			} else if (input.match(beachRegex)) {
-				data.beaches.forEach((beach) => {
-					resultDiv.appendChild(getResultCardElement(beach));
-				});
 			} else {
-				resultDiv.innerHTML = "Destination not found";
+				if (input.match(countryRegex)) {
+					data.countries.forEach((country) => {
+						country.cities.forEach((city) => {
+							resultDiv.appendChild(getResultCardElement(city));
+						});
+					});
+				} else if (input.match(templeRegex)) {
+					data.temples.forEach((temple) => {
+						resultDiv.appendChild(getResultCardElement(temple));
+					});
+				} else if (input.match(beachRegex)) {
+					data.beaches.forEach((beach) => {
+						resultDiv.appendChild(getResultCardElement(beach));
+					});
+				} else {
+					resultDiv.innerHTML = "Destination not found";
+				}
 			}
 		})
 		.catch((error) => {
