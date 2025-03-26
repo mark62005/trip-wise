@@ -3,6 +3,7 @@ const clearSearchBtn = document.getElementById("clear-search-btn");
 
 function resetField() {
 	document.getElementById("search-input").value = "";
+	document.getElementById("results").innerHTML = "";
 }
 clearSearchBtn.addEventListener("click", resetField);
 
