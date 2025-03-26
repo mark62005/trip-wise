@@ -48,6 +48,10 @@ function getResultCardElement(data) {
 	return card;
 }
 
+function checkInsideCoutriesArr(input, countries) {
+	return countries.findIndex((c) => c.name.toLowerCase() === input);
+}
+
 function handleSearch() {
 	const input = document
 		.getElementById("search-input")
@@ -62,7 +66,13 @@ function handleSearch() {
 			const templeRegex = /\btemple(s)?\b/;
 			const countryRegex = /\bcountr(?:y|ies)?\b/;
 
-			if (input.match(countryRegex)) {
+			const targetIndex = checkInsideCoutriesArr(input, data.countries);
+
+			if (targetIndex !== -1) {
+				data.countries[targetIndex].cities.forEach((city) => {
+					resultDiv.appendChild(getResultCardElement(city));
+				});
+			} else if (input.match(countryRegex)) {
 				data.countries.forEach((country) => {
 					country.cities.forEach((city) => {
 						resultDiv.appendChild(getResultCardElement(city));
