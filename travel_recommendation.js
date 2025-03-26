@@ -13,7 +13,7 @@ function getResultCardElement(data) {
 
 	// Create image element
 	const img = document.createElement("img");
-	img.src = `/${data.imageUrl}`;
+	img.src = `./${data.imageUrl}`;
 	img.alt = `Image of ${data.name}`;
 	img.className = "basis-1/2 object-cover object-center";
 
